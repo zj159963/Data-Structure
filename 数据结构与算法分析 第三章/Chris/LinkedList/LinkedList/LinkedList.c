@@ -139,19 +139,22 @@ Position FindPrevious(ElementType E, LinkedList L)
 {
     Position P;
     
+    if (IsEmpty(L))
+        return NULL;
+    
     P = L;
     while (P->Next != NULL && P->Next->Element != E)
         P = P->Next;
-    
-    return P == L ? NULL : P;
+    return P->Next == NULL ? NULL : P;
 }
 
 Position FindPrior(LinkedList L, Position P)
 {
     Position TempCell;
     
+    assert(P != NULL);
     TempCell = L;
-    while (TempCell != NULL && TempCell->Next != P)
+    while (TempCell->Next != NULL && TempCell->Next != P)
         TempCell = TempCell->Next;
     return TempCell;
 }
@@ -214,7 +217,7 @@ Position FindMid(ElementType E, LinkedList L)
         Slow = Slow->Next;
         Fast = Fast->Next->Next;
     }
-    return Slow;
+    return Fast->Next == NULL ? Slow : Slow ->Next;
 }
 
 void Append(LinkedList L, LinkedList A)

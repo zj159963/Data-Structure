@@ -123,18 +123,16 @@ Position CircularLinkedListFind(CircularLinkedList L, void *E)
     Position P;
     
     P = L->Next;
-    while (P != L) {
-        if (P->Element == E)
-            return P;
+    while (P != L && P->Element != E)
         P = P->Next;
-    }
-    return NULL;
+    return P == L ? NULL : P;
 }
 
 Position CircularLinkedListFindPrior(CircularLinkedList L, Position P)
 {
     Position Temp;
     
+    assert(P != NULL);
     Temp = L;
     while (Temp->Next != L && Temp->Next != P)
         Temp = Temp->Next;
@@ -145,11 +143,13 @@ Position CircularLinkedListFindPrevious(CircularLinkedList L, void *E)
 {
     Position P;
     
-    P = L;
+    if (CircularLinkedListIsEmpty(L))
+        return NULL;
     
+    P = L;
     while (P->Next != L && P->Next->Element != E)
         P = P->Next;
-    return P->Next == L ? NULL : P;
+    return P->Next == L : NULL : P;
 }
 
 Position CircularLinkedListFindMid(CircularLinkedList L)
@@ -163,7 +163,7 @@ Position CircularLinkedListFindMid(CircularLinkedList L)
         Slow = Slow->Next;
         Fast = Fast->Next->Next;
     }
-    return Slow;
+    return Fast->Next == L ? Slow : Slow ->Next;
 }
 
 Position CircularLinkedListFindFromTail(CircularLinkedList L, unsigned int Distance)
