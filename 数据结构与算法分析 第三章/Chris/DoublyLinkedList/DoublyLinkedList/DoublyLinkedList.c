@@ -202,9 +202,6 @@ Position DoublyLinkedListFindPreviousNode(DoublyLinkedList L, int Element)
 {
     Position P;
     
-    if (DoublyLinkedListIsEmpty(L))
-        return NULL;
-    
     P = L;
     while (P->Next != NULL && P->Next->Element != Element)
         P = P->Next;

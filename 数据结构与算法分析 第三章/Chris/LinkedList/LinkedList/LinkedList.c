@@ -139,9 +139,6 @@ Position FindPrevious(ElementType E, LinkedList L)
 {
     Position P;
     
-    if (IsEmpty(L))
-        return NULL;
-    
     P = L;
     while (P->Next != NULL && P->Next->Element != E)
         P = P->Next;
@@ -277,7 +274,7 @@ void DeleteList(LinkedList L)
     
     P = L->Next;
     L->Next = NULL;
-    while (P) {
+    while (P != NULL) {
         TmpCell = P->Next;
         free(P);
         P = TmpCell;

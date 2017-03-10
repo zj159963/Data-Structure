@@ -51,7 +51,7 @@ int CircularLinkedListIsEmpty(CircularLinkedList L)
 
 int CircularLinkedListIsFirstNode(CircularLinkedList L, Position P)
 {
-    return P == L->Next;
+    return P == L ? 0 : P == L->Next;
 }
 
 int CircularLinkedListIsLastNode(CircularLinkedList L, Position P)
@@ -90,7 +90,7 @@ int CircularLinkedListBadLoopLength(CircularLinkedList L)
             break;
     }
     
-    if (Slow != Fast || Slow == L)
+    if (Slow != Fast)
         return 0;
     
     length = 1;
@@ -143,13 +143,10 @@ Position CircularLinkedListFindPrevious(CircularLinkedList L, void *E)
 {
     Position P;
     
-    if (CircularLinkedListIsEmpty(L))
-        return NULL;
-    
     P = L;
     while (P->Next != L && P->Next->Element != E)
         P = P->Next;
-    return P->Next == L : NULL : P;
+    return P->Next == L ? NULL : P;
 }
 
 Position CircularLinkedListFindMid(CircularLinkedList L)

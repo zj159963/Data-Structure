@@ -54,14 +54,14 @@ int main(int argc, const char * argv[])
     printf("Circular Linked List is%s last node.\n", CircularLinkedListIsLastNode(List, CircularLinkedListLastNode(List)) ? "" : " not");
     
     /*
-    CircularLinkedListLastNode(List)->Next = List->Next->Next;
+    CircularLinkedListLastNode(List)->Next = CircularLinkedListLastNode(List)->Next;
     
     printf("Circular Linked List %shas bad loop.\n", CircularLinkedListIsBadLoop(List) ? "" : "doesn't ");
     printf("Circular Linked List bad loop length is %d.\n", CircularLinkedListBadLoopLength(List));
     printf("Circular Linked List bad loop entrance elemnt is ");
     LogElement(CircularLinkedListBadLoopEntrance(List)->Element);
     printf(".\n");
-     */
+    */
     
     printf("Circular Linked List first element is : ");
     LogElement(CircularLinkedListFirstNode(List)->Element);
