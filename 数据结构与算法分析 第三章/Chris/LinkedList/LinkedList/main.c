@@ -20,11 +20,6 @@ int main(int argc, const char *argv[])
     printf("Length of list is: %d\n", Length(L));
     PrintList(L);
     
-    Position SSS = calloc(1, sizeof(struct Node));
-    DeleteNode(SSS, L);
-    
-    PrintList(L);
-    
     putchar('\n');
     return 0;
 }

@@ -13,14 +13,14 @@
 
 int const HEAD_FALG = INT_MAX;
 
-LinkedList CreateList(const ElementType *array, int count)
+LinkedList CreateList(const ElementType *array, int count /* 0 */)
 {
     LinkedList L;
     Position P, TmpCell;
     int index = 0;
     
     L = malloc(sizeof(struct Node));
-    L->Element = HEAD_FALG;
+    L->Element = HEAD_FALG; // flag
     P = L;
     
     for (index = 0; index < count; index++) {
@@ -67,6 +67,8 @@ int IsFirst(Position P, LinkedList L)
 int IsLoop(LinkedList L)
 {
     Position Fast, Slow;
+    
+    /// h -> 0 -> 1 -> 2 -> 1
     
     Fast = L;
     Slow = L;
@@ -137,6 +139,8 @@ Position Find(ElementType E, LinkedList L)
 
 Position FindPrevious(ElementType E, LinkedList L)
 {
+    /// head -> 0 -> 1 -> 2 -> null
+    /// p = 5, L = head
     Position P;
     
     P = L;
@@ -153,7 +157,7 @@ Position FindPrior(LinkedList L, Position P)
     TempCell = L;
     while (TempCell->Next != NULL && TempCell->Next != P)
         TempCell = TempCell->Next;
-    return TempCell;
+    return TempCell->Next == NULL ? NULL : TempCell;
 }
 
 Position FindFromTail(unsigned int Distance, LinkedList L)
@@ -207,6 +211,9 @@ Position FindMid(ElementType E, LinkedList L)
 {
     Position Slow, Fast;
     
+    /// h -> 0 -> 1 ... -> 9 -> 10 -> NULL
+    /// Fast 走了五步, slow 走了五步
+    
     Slow = L;
     Fast = L;
     
@@ -230,6 +237,7 @@ void Insert(ElementType E, Position P, LinkedList L)
     TmpCell = malloc(sizeof(struct Node));
     assert(TmpCell != NULL);
     TmpCell->Element = E;
+    
     TmpCell->Next = P->Next;
     P->Next = TmpCell;
 }
@@ -241,6 +249,9 @@ void DeleteNode(Position NodeToDelete, LinkedList L)
     assert(L != NodeToDelete);
     
     if (IsLast(NodeToDelete, L)) {
+        
+        /// head -> 0 -> 1 -> null
+        
         Prior = FindPrior(L, NodeToDelete);
         free(NodeToDelete);
         Prior->Next = NULL;
@@ -249,9 +260,10 @@ void DeleteNode(Position NodeToDelete, LinkedList L)
     
     TempCell = NodeToDelete->Next;
     
+    /// head -> 0 -> 2 -> null
+    
     NodeToDelete->Next = TempCell->Next;
     NodeToDelete->Element = TempCell->Element;
-    TempCell = NULL;
     free(TempCell);
 }
 
