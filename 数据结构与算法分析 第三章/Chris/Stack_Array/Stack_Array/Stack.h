@@ -10,12 +10,8 @@
 #define Stack_h
 
 typedef int ElementType;
-typedef struct Stack_t {
-    unsigned int Capacity;
-    int Top;
-    ElementType *Elements;
-} *Stack;
-
+struct Stack_t;
+typedef struct Stack_t *Stack;
 Stack StackCreate(unsigned int Capacity);
 
 int StackIsEmpty(Stack S);

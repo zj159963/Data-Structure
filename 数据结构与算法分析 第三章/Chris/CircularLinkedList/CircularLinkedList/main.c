@@ -50,7 +50,7 @@ int main(int argc, const char * argv[])
     printf("%d\n", CircularLinkedListLength(List));
     
     printf("Circular Linked List is %sempty.\n", CircularLinkedListIsEmpty(List) ? "" : "not ");
-    printf("Circular Linked List is%s first node.\n", CircularLinkedListIsFirstNode(List, List->Next) ? "" : " not");
+    printf("Circular Linked List is%s first node.\n", CircularLinkedListIsFirstNode(List, CircularLinkedListAdvance(List)) ? "" : " not");
     printf("Circular Linked List is%s last node.\n", CircularLinkedListIsLastNode(List, CircularLinkedListLastNode(List)) ? "" : " not");
     
     /*
@@ -64,27 +64,27 @@ int main(int argc, const char * argv[])
     */
     
     printf("Circular Linked List first element is : ");
-    LogElement(CircularLinkedListFirstNode(List)->Element);
+    LogElement(CircularLinkedListRetrieve(CircularLinkedListFirstNode(List)));
     putchar('\n');
     
     printf("Circular Linked List last element is : ");
-    LogElement(CircularLinkedListLastNode(List)->Element);
+    LogElement(CircularLinkedListRetrieve(CircularLinkedListLastNode(List)));
     putchar('\n');
     
     printf("Circular Linked List node which element is 5 : ");
-    LogElement(CircularLinkedListFind(List, Src[5])->Element);
+    LogElement(CircularLinkedListRetrieve(CircularLinkedListFind(List, Src[5])));
     putchar('\n');
     
     printf("Circular Linked List node which next node's element is 5 : ");
-    LogElement(CircularLinkedListFindPrevious(List, Src[5])->Element);
+    LogElement(CircularLinkedListRetrieve(CircularLinkedListFindPrevious(List, Src[5])));
     putchar('\n');
     
     printf("Circular Linked List mid node's element is ");
-    LogElement(CircularLinkedListFindMid(List)->Element);
+    LogElement(CircularLinkedListRetrieve(CircularLinkedListFindMid(List)));
     putchar('\n');
     
     printf("Circular Linked List find 3 from tail element is ");
-    LogElement(CircularLinkedListFindFromTail(List, 3)->Element);
+    LogElement(CircularLinkedListRetrieve(CircularLinkedListFindFromTail(List, 3)));
     putchar('\n');
 
     CircularLinkedListAppend(List, A);
@@ -94,7 +94,7 @@ int main(int argc, const char * argv[])
 
     ElementTempCell = calloc(1, sizeof(int));
     *ElementTempCell = 111;
-    CircularLinkedListInsert(List, ElementTempCell, List->Next->Next);
+    CircularLinkedListInsert(List, ElementTempCell, CircularLinkedListAdvance(CircularLinkedListFirstNode(List)));
     printf("Circular Linked List after inserting 111 is: ");
     CircularLinkedListPrint(List, LogElement);
     putchar('\n');

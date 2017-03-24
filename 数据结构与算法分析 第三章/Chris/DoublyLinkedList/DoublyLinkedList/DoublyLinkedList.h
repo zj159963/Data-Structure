@@ -17,12 +17,6 @@ typedef struct Node *PtrToNode;
 typedef PtrToNode DoublyLinkedList;
 typedef PtrToNode Position;
 
-struct Node {
-    int Element;
-    Position Prior;
-    Position Next;
-};
-
 DoublyLinkedList DoublyLinkedListCreate(const int Source[], unsigned int count);
 
 int DoublyLinkedListIsLegal(DoublyLinkedList L);
@@ -43,6 +37,8 @@ int DoublyLinkedListIsBadLoop(DoublyLinkedList L);
  */
 int DoublyLinkedListBadLoopLength(DoublyLinkedList L, int *Flag);
 
+int DoublyLinkedListRetrieve(Position P);
+
 Position DoublyLinkedListFirstNode(DoublyLinkedList L);
 Position DoublyLinkedListLastNode(DoublyLinkedList L);
 Position DoublyLinkedListMiddleNode(DoublyLinkedList L);
@@ -56,6 +52,7 @@ Position DoublyLinkedListFindNodeFromTail(DoublyLinkedList L, unsigned int Dista
  *  If there is none loop, Flag is 0.
  */
 Position DoublyLinkedListFindBadLoopEntrance(DoublyLinkedList L, int *Flag);
+Position DoublyLinkedListAdvance(Position P);
 
 void DoublyLinkedListAppendList(DoublyLinkedList L, DoublyLinkedList A);
 void DoublyLinkedListInsertElement(DoublyLinkedList L, Position P, int Element);

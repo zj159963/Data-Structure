@@ -15,11 +15,6 @@ typedef struct Node *PtrToNode;
 typedef PtrToNode CircularLinkedList;
 typedef PtrToNode Position;
 
-struct Node {
-    void *Element;
-    Position Next;
-};
-
 CircularLinkedList CircularLinkedListCreate(void **Src, unsigned int Count);
 
 unsigned int CircularLinkedListLength(CircularLinkedList L);
@@ -29,6 +24,9 @@ int CircularLinkedListIsLastNode(CircularLinkedList L, Position P);
 int CircularLinkedListIsBadLoop(CircularLinkedList L);
 int CircularLinkedListBadLoopLength(CircularLinkedList L);
 
+void * CircularLinkedListRetrieve(Position P);
+
+Position CircularLinkedListAdvance(Position P);
 Position CircularLinkedListFirstNode(CircularLinkedList L);
 Position CircularLinkedListLastNode(CircularLinkedList L);
 Position CircularLinkedListFind(CircularLinkedList L, void *E);

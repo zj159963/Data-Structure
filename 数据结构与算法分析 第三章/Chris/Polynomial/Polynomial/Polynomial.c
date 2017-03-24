@@ -11,6 +11,12 @@
 #include <assert.h>
 #include "Polynomial.h"
 
+struct Node {
+    int Coeff;
+    int Exponent;
+    Position Next;
+};
+
 Polynomial PolynomialCreateWithExponents(const int Exponents[], const int Coefficients[], unsigned int Count)
 {
     Polynomial Poly;

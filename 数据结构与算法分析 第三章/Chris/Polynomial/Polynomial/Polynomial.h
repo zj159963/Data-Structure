@@ -15,11 +15,6 @@ typedef struct Node* PtrToNode;
 typedef PtrToNode Position;
 typedef PtrToNode Polynomial;
 
-struct Node {
-    int Coeff;
-    int Exponent;
-    Position Next;
-};
 /*
  *  The params Exponents should be sorted in descending order.
  *  And the Coefficients' count should be equal to Exponents.

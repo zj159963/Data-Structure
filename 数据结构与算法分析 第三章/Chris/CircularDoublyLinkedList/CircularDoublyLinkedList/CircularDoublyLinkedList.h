@@ -17,12 +17,6 @@ typedef struct Node *PtrToNode;
 typedef PtrToNode CircularDoublyLinkedList;
 typedef PtrToNode Position;
 
-struct Node {
-    int Element;
-    Position Prior;
-    Position Next;
-};
-
 CircularDoublyLinkedList CircularDoublyLinkedListCreate(const int Source[], unsigned int Count);
 
 int CircularDoublyLinkedListIsEmpty(CircularDoublyLinkedList L);
@@ -37,6 +31,8 @@ int CircularDoublyLinkedListIsLastNode(CircularDoublyLinkedList L, Position P);
 int CircularDoublyLinkedListIsBadLoop(CircularDoublyLinkedList L);
 int CircularDoublyLinkedListBadLoopLength(CircularDoublyLinkedList L, int *Flag);
 
+int CircularDoublyLinkedListRetrieve(Position P);
+
 Position CircularDoublyLinkedListFirstNode(CircularDoublyLinkedList L);
 Position CircularDoublyLinkedListLastNode(CircularDoublyLinkedList L);
 Position CircularDoublyLinkedListFindMiddleNode(CircularDoublyLinkedList L);
@@ -45,6 +41,8 @@ Position CircularDoublyLinkedListFind(CircularDoublyLinkedList L, int Element);
 Position CircularDoublyLinkedListFindPrevious(CircularDoublyLinkedList L, int Element);
 Position CircularDoublyLinkedListFindPrior(CircularDoublyLinkedList L, Position P);
 Position CircularDoublyLinkedListFindBadLoopEntrance(CircularDoublyLinkedList L, int *Flag);
+
+Position CircularDoublyLinkedListAdvance(Position P);
 
 void CircularDoublyLinkedListAppendList(CircularDoublyLinkedList L, CircularDoublyLinkedList A);
 void CircularDoublyLinkedListInsertElement(CircularDoublyLinkedList L, Position P, int Element);

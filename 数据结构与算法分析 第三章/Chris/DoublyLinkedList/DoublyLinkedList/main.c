@@ -27,8 +27,8 @@ int main(int argc, const char * argv[])
     putchar('\n');
     
     printf("The List is %sempty.\n", DoublyLinkedListIsEmpty(List) ? "" : "not ");
-    printf("The node is %sthe first node of list.\n", DoublyLinkedListIsFirstNode(List, List->Next) ? "" : "not ");
-    printf("The node is %sthe last node of list.\n", DoublyLinkedListIsLastNode(List, List->Next) ? "" : "not ");
+    printf("The node is %sthe first node of list.\n", DoublyLinkedListIsFirstNode(List, DoublyLinkedListAdvance(List)) ? "" : "not ");
+    printf("The node is %sthe last node of list.\n", DoublyLinkedListIsLastNode(List, DoublyLinkedListAdvance(List)) ? "" : "not ");
     printf("The length of list is %d.\n", DoublyLinkedListLength(List));
     
     /*
@@ -44,13 +44,13 @@ int main(int argc, const char * argv[])
         printf("The list does not has a bad loop.\n");
     */
     
-    printf("The element of the first node in the list is %d.\n", DoublyLinkedListFirstNode(List)->Element);
-    printf("The element of the last node in the list is %d.\n", DoublyLinkedListLastNode(List)->Element);
-    printf("The element of the middle node in the list is %d.\n", DoublyLinkedListMiddleNode(List)->Element);
+    printf("The element of the first node in the list is %d.\n", DoublyLinkedListRetrieve(DoublyLinkedListFirstNode(List)));
+    printf("The element of the last node in the list is %d.\n", DoublyLinkedListRetrieve(DoublyLinkedListLastNode(List)));
+    printf("The element of the middle node in the list is %d.\n", DoublyLinkedListRetrieve(DoublyLinkedListMiddleNode(List)));
     printf("The node which element is %d is %p.\n", 3, DoublyLinkedListFindNode(List, 3));
-    printf("The node which next node's element is %d is %d.\n", 3, DoublyLinkedListFindPreviousNode(List, 3)->Element);
-    printf("The node at the proir of %d is %d.\n", 2, DoublyLinkedListFindPriorNode(List, DoublyLinkedListFindNode(List, 2))->Element);
-    printf("The elment of %d distance from the tail of the list is %d.\n", 0, DoublyLinkedListFindNodeFromTail(List, 0)->Element);
+    printf("The node which next node's element is %d is %d.\n", 3, DoublyLinkedListRetrieve(DoublyLinkedListFindPreviousNode(List, 3)));
+    printf("The node at the proir of %d is %d.\n", 2, DoublyLinkedListRetrieve(DoublyLinkedListFindPriorNode(List, DoublyLinkedListFindNode(List, 2))));
+    printf("The elment of %d distance from the tail of the list is %d.\n", 0, DoublyLinkedListRetrieve(DoublyLinkedListFindNodeFromTail(List, 0)));
     
     printf("The list after insert element %d after %d is : ", 10, 9);
     DoublyLinkedListInsertElement(List, DoublyLinkedListFindNode(List, 9), 10);

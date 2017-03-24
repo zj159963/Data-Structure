@@ -31,9 +31,9 @@ int main(int argc, const char * argv[])
     printf("The list is %sempty.\n", CircularDoublyLinkedListIsEmpty(List) ? "" : "not ");
     printf("The length of the list is %d.\n", CircularDoublyLinkedListLength(List));
     
-    printf("The node which element is %d is%s the first node of the list.\n", List->Next->Element, CircularDoublyLinkedListIsFirstNode(List, List->Next->Next) ? "" : " not");
+    printf("The node which element is %d is%s the first node of the list.\n", CircularDoublyLinkedListRetrieve(CircularDoublyLinkedListFirstNode(List)), CircularDoublyLinkedListIsFirstNode(List, CircularDoublyLinkedListFirstNode(List)) ? "" : " not");
     
-    printf("The node whitch element is %d is%s the last node of the list.\n", List->Next->Element, CircularDoublyLinkedListIsLastNode(List, List->Next) ? "" : " not");
+    printf("The node whitch element is %d is%s the last node of the list.\n", CircularDoublyLinkedListRetrieve(CircularDoublyLinkedListFirstNode(List)), CircularDoublyLinkedListIsLastNode(List, CircularDoublyLinkedListAdvance(List)) ? "" : " not");
     
     /*
     int bad, *flag = calloc(1, sizeof(int));
@@ -69,7 +69,7 @@ int main(int argc, const char * argv[])
     printf("The list after deleting element %d is : ", 10);
     CircularDoublyLinkedListPrint(List);
     
-    CircularDoublyLinkedListDeleteNode(List, List->Prior);
+    CircularDoublyLinkedListDeleteNode(List, CircularDoublyLinkedListFindPrior(List, List));
     printf("The list after deleting the node is : ");
     CircularDoublyLinkedListPrint(List);
     

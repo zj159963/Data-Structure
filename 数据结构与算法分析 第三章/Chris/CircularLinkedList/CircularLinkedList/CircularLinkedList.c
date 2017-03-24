@@ -11,6 +11,11 @@
 #include <assert.h>
 #include "CircularLinkedList.h"
 
+struct Node {
+    void *Element;
+    Position Next;
+};
+
 CircularLinkedList CircularLinkedListCreate(void **Src, unsigned int Count)
 {
     CircularLinkedList List;
@@ -101,6 +106,16 @@ int CircularLinkedListBadLoopLength(CircularLinkedList L)
         length++;
     }
     return length;
+}
+
+void * CircularLinkedListRetrieve(Position P)
+{
+    return P->Element;
+}
+
+Position CircularLinkedListAdvance(Position P)
+{
+    return P->Next;
 }
 
 Position CircularLinkedListFirstNode(CircularLinkedList L)

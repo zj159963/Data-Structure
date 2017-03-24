@@ -10,6 +10,12 @@
 #include <assert.h>
 #include "CircularDoublyLinkedList.h"
 
+struct Node {
+    int Element;
+    Position Prior;
+    Position Next;
+};
+
 CircularDoublyLinkedList CircularDoublyLinkedListCreate(const int Source[], unsigned int Count)
 {
     CircularDoublyLinkedList List;
@@ -138,6 +144,16 @@ int CircularDoublyLinkedListBadLoopLength(CircularDoublyLinkedList L, int *Flag)
         return length;
     }
     return length;
+}
+
+int CircularDoublyLinkedListRetrieve(Position P)
+{
+    return P->Element;
+}
+
+Position CircularDoublyLinkedListAdvance(Position P)
+{
+    return P->Next;
 }
 
 Position CircularDoublyLinkedListFirstNode(CircularDoublyLinkedList L)

@@ -11,18 +11,13 @@
 
 #include <stdio.h>
 
+struct Node;
 typedef int ElementType;
 typedef int PtrToNode;
 typedef PtrToNode List;
 typedef PtrToNode Position;
 
-struct Node {
-    ElementType Element;
-    Position Next;
-};
-
 #define LinkedListCursorSpaceSize 1000
-extern struct Node LinkedListCursorSpace[LinkedListCursorSpaceSize];
 
 void LinkedListInitializeCursorSpace(void);
 

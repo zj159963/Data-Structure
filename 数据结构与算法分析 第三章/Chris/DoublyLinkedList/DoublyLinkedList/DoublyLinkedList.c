@@ -10,6 +10,12 @@
 #include <assert.h>
 #include "DoublyLinkedList.h"
 
+struct Node {
+    int Element;
+    Position Prior;
+    Position Next;
+};
+
 DoublyLinkedList DoublyLinkedListCreate(const int Source[], unsigned int count)
 {
     DoublyLinkedList List;
@@ -159,6 +165,11 @@ int DoublyLinkedListBadLoopLength(DoublyLinkedList L, int *Flag)
     return 0;
 }
 
+int DoublyLinkedListRetrieve(Position P)
+{
+    return P->Element;
+}
+
 Position DoublyLinkedListFirstNode(DoublyLinkedList L)
 {
     return L->Next;
@@ -292,6 +303,11 @@ Position DoublyLinkedListFindBadLoopEntrance(DoublyLinkedList L, int *Flag)
         return Slow;
     }
     return NULL;
+}
+
+Position DoublyLinkedListAdvance(Position P)
+{
+    return P->Next;
 }
 
 void DoublyLinkedListAppendList(DoublyLinkedList L, DoublyLinkedList A)

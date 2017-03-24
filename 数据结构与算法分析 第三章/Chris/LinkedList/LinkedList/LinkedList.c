@@ -11,6 +11,11 @@
 #include <limits.h>
 #include "LinkedList.h"
 
+struct Node {
+    ElementType Element;
+    Position Next;
+};
+
 int const HEAD_FALG = INT_MAX;
 
 LinkedList CreateList(const ElementType *array, int count /* 0 */)
@@ -108,6 +113,11 @@ int LoopLength(LinkedList L)
         length++;
     }
     return length;
+}
+
+ElementType Retrieve(Position P)
+{
+    return P->Element;
 }
 
 Position First(LinkedList L)
@@ -211,9 +221,6 @@ Position FindMid(ElementType E, LinkedList L)
 {
     Position Slow, Fast;
     
-    /// h -> 0 -> 1 ... -> 9 -> 10 -> NULL
-    /// Fast 走了五步, slow 走了五步
-    
     Slow = L;
     Fast = L;
     
@@ -222,6 +229,11 @@ Position FindMid(ElementType E, LinkedList L)
         Fast = Fast->Next->Next;
     }
     return Fast->Next == NULL ? Slow : Slow ->Next;
+}
+
+Position Advance(Position P)
+{
+    return P->Next;
 }
 
 void Append(LinkedList L, LinkedList A)

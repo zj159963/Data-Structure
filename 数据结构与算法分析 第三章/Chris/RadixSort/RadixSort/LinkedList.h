@@ -19,11 +19,6 @@ typedef struct Node* PtrToNode;
 typedef PtrToNode Position;
 typedef PtrToNode LinkedList;
 
-struct Node {
-    ElementType Element;
-    Position Next;
-};
-
 LinkedList LinkedListCreate(const ElementType *array, int count);
 LinkedList LinkedListCopy(LinkedList L);
 

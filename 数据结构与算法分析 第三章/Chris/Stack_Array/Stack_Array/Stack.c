@@ -11,6 +11,13 @@
 #include <stdlib.h>
 #include <assert.h>
 
+struct Stack_t {
+    unsigned int Capacity;
+    int Top;
+    ElementType *Elements;
+};
+
+
 static int const StackEmptyTop = -1;
 
 Stack StackCreate(unsigned int Capacity)

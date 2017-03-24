@@ -12,6 +12,11 @@
 #include <math.h>
 #include "LinkedList.h"
 
+struct Node {
+    ElementType Element;
+    Position Next;
+};
+
 int const HEAD_FALG = INT_MAX;
 
 LinkedList LinkedListCreate(const ElementType *array, int count)

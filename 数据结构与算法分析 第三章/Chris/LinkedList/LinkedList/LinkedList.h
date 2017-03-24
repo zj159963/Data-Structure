@@ -19,11 +19,6 @@ typedef struct Node* PtrToNode;
 typedef PtrToNode Position;
 typedef PtrToNode LinkedList;
 
-struct Node {
-    ElementType Element;
-    Position Next;
-};
-
 LinkedList CreateList(const ElementType *array, int count);
 
 int Length(LinkedList L);
@@ -33,6 +28,8 @@ int IsFirst(Position P, LinkedList L);
 int IsLoop(LinkedList L);
 int LoopLength(LinkedList L);
 
+ElementType Retrieve(Position P);
+
 Position First(LinkedList L);
 Position Last(LinkedList L);
 Position Find(ElementType E, LinkedList L);
@@ -41,6 +38,7 @@ Position FindPrior(LinkedList L, Position P);
 Position FindMid(ElementType E, LinkedList L);
 Position FindFromTail(unsigned int Distance, LinkedList L);
 Position FindLoopEntrance(LinkedList L);
+Position Advance(Position P);
 
 void Append(LinkedList L, LinkedList A);
 void Insert(ElementType E, Position P, LinkedList L); /// Insert new Element after P

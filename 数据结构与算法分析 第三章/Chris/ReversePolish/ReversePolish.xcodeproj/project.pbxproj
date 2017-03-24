@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		836B96281E8246F200377C43 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 836B96271E8246F200377C43 /* main.c */; };
+		836B96301E82485800377C43 /* Stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 836B962E1E82485800377C43 /* Stack.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		836B96241E8246F200377C43 /* ReversePolish */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReversePolish; sourceTree = BUILT_PRODUCTS_DIR; };
 		836B96271E8246F200377C43 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		836B962E1E82485800377C43 /* Stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Stack.c; path = ../Stack.c; sourceTree = "<group>"; };
+		836B962F1E82485800377C43 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stack.h; path = ../Stack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				836B96271E8246F200377C43 /* main.c */,
+				836B962E1E82485800377C43 /* Stack.c */,
+				836B962F1E82485800377C43 /* Stack.h */,
 			);
 			path = ReversePolish;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				836B96301E82485800377C43 /* Stack.c in Sources */,
 				836B96281E8246F200377C43 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

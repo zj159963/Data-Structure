@@ -12,6 +12,11 @@
 #include <limits.h>
 #include "LinkedList.h"
 
+struct Node {
+    ElementType Element;
+    Position Next;
+};
+
 struct Node LinkedListCursorSpace[LinkedListCursorSpaceSize];
 
 static Position LinkedListCursorAlloc(void)
