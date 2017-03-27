@@ -1,4 +1,4 @@
-# 周末交第一章作业
+# 周末交第二章作业
 
 ##一、 斐波那契数列、最大子序列和、二叉搜索分别见程序： Fibonacci、MaxSubsequence 和 BinarySearch。
 

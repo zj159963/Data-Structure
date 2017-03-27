@@ -257,6 +257,92 @@ Position Advance(Position P)
     return P->Next;
 }
 
+LinkedList IntersectSortedLists(LinkedList L1, LinkedList L2, int ascending)
+{
+    LinkedList L;
+    Position P, P1, P2, TempCell;
+    
+    L = CreateList(NULL, 0);
+    P = L;
+    P1 = L1->Next;
+    P2 = L2->Next;
+    
+    while (P1 != NULL && P2 != NULL) {
+        if (P1->Element == P2->Element) {
+            TempCell = malloc(sizeof(struct Node));
+            assert(TempCell != NULL);
+            TempCell->Element = P1->Element;
+            TempCell->Next = NULL;
+            P->Next = TempCell;
+            P = TempCell;
+            P1 = P1->Next;
+            P2 = P2->Next;
+        } else if (P1->Element < P2->Element) {
+            if (ascending)
+                P1 = P1->Next;
+            else
+                P2 = P2->Next;
+        } else {
+            if (ascending)
+                P2 = P2->Next;
+            else
+                P1 = P1->Next;
+        }
+    }
+    return L;
+}
+
+LinkedList UnionSortedLists(LinkedList L1, LinkedList L2, int ascending)
+{
+    LinkedList L;
+    
+    Position P, P1, P2, TempCell;
+    
+    L = CreateList(NULL, 0);
+    P = L;
+    P1 = L1->Next;
+    P2 = L2->Next;
+    
+    while (P1 != NULL || P2 != NULL) {
+        TempCell = malloc(sizeof(struct Node));
+        assert(TempCell != NULL);
+        TempCell->Next = NULL;
+        
+        if (P1 == NULL) {
+            TempCell->Element = P2->Element;
+            P2 = P2->Next;
+        } else if (P2 == NULL) {
+            TempCell->Element = P1->Element;
+            P1 = P1->Next;
+        } else {
+            if (P1->Element == P2->Element) {
+                TempCell->Element = P1->Element;
+                P1 = P1->Next;
+                P2 = P2->Next;
+            } else if (P1->Element < P2->Element) {
+                if (ascending) {
+                    TempCell->Element = P1->Element;
+                    P1 = P1->Next;
+                } else {
+                    TempCell->Element = P2->Element;
+                    P2 = P2->Next;
+                }
+            } else {
+                if (ascending) {
+                    TempCell->Element = P2->Element;
+                    P2 = P2->Next;
+                } else {
+                    TempCell->Element = P1->Element;
+                    P1 = P1->Next;
+                }
+            }
+        }
+        P->Next = TempCell;
+        P = TempCell;
+    }
+    return L;
+}
+
 void Append(LinkedList L, LinkedList A)
 {
     // h1 -> 0 -> 1 -> 2 -> NULL

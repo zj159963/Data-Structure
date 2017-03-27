@@ -74,11 +74,6 @@ int IsLoop(LinkedList L)
 {
     Position Fast, Slow;
     
-    /// head -> 0 -> 1 -> 2 -> 3 -> 0
-    /// 环的长度 L = 4
-    /// 走了 X 步，Fast 走了 X * 2 距离
-    /// Slow 走了 X
-    
     Fast = L;
     Slow = L;
     
@@ -144,11 +139,6 @@ Position Find(ElementType E, LinkedList L)
 {
     Position P;
     
-    /// head -> 0 -> 1 -> 2 -> NULL
-    /// E = 3
-    
-    /// Positon?
-    
     P = L->Next;
     while (P != NULL && P->Element != E)
         P = P->Next;
@@ -158,8 +148,6 @@ Position Find(ElementType E, LinkedList L)
 
 Position FindPrevious(ElementType E, LinkedList L)
 {
-    /// head -> 0 -> 1 -> 2 -> null
-    /// p = 5, L = head
     Position P;
     
     P = L;
@@ -183,8 +171,6 @@ Position FindFromTail(unsigned int Distance, LinkedList L)
 {
     Position P, TmpCell;
     int index;
-    
-    /// head -> 0 -> 1 -> 2 -> 3 -> ... -> 10 -> NULL
     
     TmpCell = L;
     
@@ -232,16 +218,6 @@ Position FindMid(ElementType E, LinkedList L)
 {
     Position Slow, Fast;
     
-    
-    // slow -> next， fast -> next ->next
-    // 2 N , N
-    // lentgh = X (X 是奇数)
-    // Fast 走了 2 * N， slow 就走了 N
-    // N = (X - 1) / 2
-    // 想要的结果 (X - 1) / 2 + 1
-    
-    /// head -> 0 -> 1 -> 2
-    
     Slow = L;
     Fast = L;
     
@@ -259,8 +235,6 @@ Position Advance(Position P)
 
 void Append(LinkedList L, LinkedList A)
 {
-    // h1 -> 0 -> 1 -> 2 -> NULL
-    
     Last(L)->Next = A->Next;
     free(A);
 }
@@ -273,9 +247,6 @@ void Insert(ElementType E, Position P, LinkedList L)
     assert(TmpCell != NULL);
     TmpCell->Element = E;
     
-    // 1
-    // h -> 0 -> 2 -> NULL
-    
     TmpCell->Next = P->Next;
     P->Next = TmpCell;
 }
@@ -287,9 +258,6 @@ void DeleteNode(Position NodeToDelete, LinkedList L)
     assert(L != NodeToDelete);
     
     if (IsLast(NodeToDelete, L)) {
-        
-        /// head -> 0 -> 1 -> null
-        
         Prior = FindPrior(L, NodeToDelete);
         free(NodeToDelete);
         Prior->Next = NULL;
@@ -297,8 +265,6 @@ void DeleteNode(Position NodeToDelete, LinkedList L)
     }
     
     TempCell = NodeToDelete->Next;
-    
-    
     
     NodeToDelete->Next = TempCell->Next;
     NodeToDelete->Element = TempCell->Element;
@@ -308,9 +274,6 @@ void DeleteNode(Position NodeToDelete, LinkedList L)
 void Delete(ElementType E, LinkedList L)
 {
     Position P, TmpCell;
-    
-    /// head -> 0 -> 1 -> 2 -> null
-    // E = 0
     
     P = FindPrevious(E, L);
     if (P != NULL) {
@@ -324,10 +287,8 @@ void Delete(ElementType E, LinkedList L)
 
 void DeleteList(LinkedList L)
 {
-    /// mArray removeAll
     Position P, TmpCell;
-    /// head -> NULL
-    ///  1 -> 2 -> null
+
     P = L->Next;
     L->Next = NULL;
     while (P != NULL) {
@@ -340,9 +301,7 @@ void DeleteList(LinkedList L)
 void Reverse(LinkedList L)
 {
     Position P, R, Tmp;
-    //         P    R
-    // head -> 0 -> 1 -> 2 -> NULL
-    // head -> 2 -> 1 -> 0 -> NULL
+    
     P = L->Next;
     Tmp = NULL;
     while (P != NULL) {
@@ -352,6 +311,18 @@ void Reverse(LinkedList L)
         P = R;
     }
     L->Next = Tmp;
+}
+
+void Swap(LinkedList L, Position P)
+{
+    Position X, Y;
+    
+    X = P->Next;
+    Y = X->Next;
+    
+    P->Next = Y;
+    X->Next = Y->Next;
+    Y->Next = X;
 }
 
 void PrintList(LinkedList L)

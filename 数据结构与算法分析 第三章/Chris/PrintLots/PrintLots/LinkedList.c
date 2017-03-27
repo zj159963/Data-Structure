@@ -372,3 +372,29 @@ void PrintList(LinkedList L)
     
     printf("\n");
 }
+
+void PrintLots(LinkedList SourceList, LinkedList IndexList)
+{
+    Position P, IndexPosition;
+    int index;
+    
+    if (IsEmpty(IndexList)) {
+        printf("Empty Indices.\n");
+        return;
+    }
+    
+    index = 0;
+    P = SourceList->Next;
+    IndexPosition = IndexList->Next;
+    
+    while (IndexPosition != NULL) {
+        if (index == IndexPosition->Element) {
+            printf("%d, ", P->Element);
+            IndexPosition = IndexPosition->Next;
+        }
+        
+        index++;
+        P = P->Next;
+    }
+    putchar('\n');
+}
