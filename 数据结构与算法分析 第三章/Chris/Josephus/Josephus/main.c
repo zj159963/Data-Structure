@@ -16,6 +16,7 @@ void JosephusCallBack(unsigned int index);
 int main(int argc, const char * argv[])
 {
     Josephus(5, 1, 1, JosephusCallBack);
+    
     putchar('\n');
     return 0;
 }
